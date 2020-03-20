@@ -1,0 +1,9 @@
+<div class="container">
+  <mat-list *ngIf="blogs | async as blogList">
+      <app-blog-card mat-list-item
+      *ngFor="let blog of blogList"
+      [blog]="blog"
+      class="item"
+      ></app-blog-card>
+  </mat-list>
+</div>

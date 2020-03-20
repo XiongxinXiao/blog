@@ -1,0 +1,10 @@
+:host {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.head-text {
+    padding-left: 5rem;
+    font-size: 1rem;
+}
