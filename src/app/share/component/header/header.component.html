@@ -1,9 +1,12 @@
 <mat-toolbar>
   <span>Summer Blog</span>
-  <span 
-    class="head-text"
-    (click)="toHome()"
-  >Home</span>
-  <span class="head-text">Admin</span>
-  <span class="head-text">Login</span>
+  <button mat-button (click)="toHome()"
+  class="head-text"
+  >Home</button>
+  <button mat-button (click)="toAdmin()"
+  class="head-text"
+  >Admin</button>
+  <button mat-button (click)="toLogin()"
+  class="head-text"
+  >Login</button>
 </mat-toolbar>

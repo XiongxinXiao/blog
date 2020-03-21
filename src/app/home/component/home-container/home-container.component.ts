@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { blog, response } from '../../interface';
+import { blog, resList } from '../../../share/interface';
 import { HomeService } from '../../service';
 import { Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
@@ -43,12 +43,10 @@ export class HomeContainerComponent implements OnInit {
       createtime: 1583630692306
     }
   ]*/
-  response: Observable<response>;
+  response: Observable<resList>;
   blogs: Observable<blog[]>;
   ngOnInit() {
-    console.log('ngOnInit');
     this.response = this.service.getBlogs();
-    console.log(this.response);
     this.blogs = this.response.pipe(
       map(res => res.data)
     );

@@ -6,7 +6,13 @@ export interface blog {
     img?: string,
     createtime: number
 }
-export interface response {
-    data: blog[],
+export interface resList {
+    data?: blog[],
+    message?: string,
+    errno: number
+}
+
+export interface resLogin {
+    message?: string,
     errno: number
 }

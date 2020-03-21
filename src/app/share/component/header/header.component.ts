@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { LoginDialogComponent } from '../login-dialog';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +10,20 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   ngOnInit() {
   }
   toHome() {
     this.router.navigate(['home']);
   }
+
+  toLogin(){
+    this.dialog.open(LoginDialogComponent);
+  }
+
+  toAdmin() {
+    this.router.navigate(['admin']);
+  }
+
 }
