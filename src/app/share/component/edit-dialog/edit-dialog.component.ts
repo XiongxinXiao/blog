@@ -31,7 +31,7 @@ export class EditDialogComponent implements OnInit {
     // TODO: Use EventEmitter with form value
     Object.assign(this.newBlog, this.blogForm.value, { createtime: Date.now() });
     this.dataHandle.emit(this.newBlog);
-    console.log('this is newBlog', this.newBlog);
+    //console.log('this is newBlog', this.newBlog);
   }
   /*titleFormControl = new FormControl(this.newBlog.title, [
     Validators.required,

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { blog } from '../../../home';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -25,17 +25,6 @@ export class BlogCardComponent implements OnInit {
   }
 
   editHandle() {
-    /*const dialogRef = this.dialog.open(EditDialogComponent, {
-      width: '450px',
-      data: this.blog
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-      Object.assign(this.blog, result);
-
-        //Object.assign(this.blog, result);
-    });*/
     this.blogEditReq.emit(this.blog); 
   }
 

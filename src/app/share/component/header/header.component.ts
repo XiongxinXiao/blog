@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.nameMerge = merge(this.realname$, this.nameSubject);
     this.login$ = this.nameMerge.pipe(
       map(res => {
-        console.log(res);
+        //console.log(res);
         if (res === 'Visitor') {
           return true;
         } else {

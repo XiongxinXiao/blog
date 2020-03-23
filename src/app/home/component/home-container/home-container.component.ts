@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { blog, resList } from '../../../share/interface';
 import { HomeService } from '../../service';
 import { Observable, merge, Subject, Subscription } from 'rxjs';
