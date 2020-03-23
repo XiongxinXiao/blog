@@ -66,6 +66,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.service.logoutReq().pipe(takeUntil(this.unsubscribe$)).subscribe(res => {
       if (res.errno === 0) {
         this.nameSubject.next('Visitor');
+        this.router.navigate(['home']);
       } else {
         alert(res.message);
       }
