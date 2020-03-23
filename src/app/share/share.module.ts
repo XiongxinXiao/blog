@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './component/header';
-import { VerticleGridComponent, BlogCardComponent } from './component';
+import { 
+    VerticleGridComponent, 
+    BlogCardComponent, 
+    LoginDialogComponent,
+    HeaderComponent,
+    EditDialogComponent } from './component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -10,17 +14,19 @@ import { MatToolbarModule}  from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { LoginDialogComponent } from './component/login-dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
     declarations: [
         HeaderComponent,
         VerticleGridComponent,
         BlogCardComponent,
-        LoginDialogComponent
+        LoginDialogComponent,
+        EditDialogComponent
     ],
     imports: [ 
         CommonModule,
@@ -32,16 +38,31 @@ import { MatListModule } from '@angular/material/list';
         FormsModule,
         MatInputModule,
         MatListModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatIconModule,
+        MatMenuModule
     ],
     exports: [
         HeaderComponent,
         VerticleGridComponent,
-        BlogCardComponent
+        BlogCardComponent,
+        CommonModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatInputModule,
+        MatListModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatMenuModule
     ],
     providers: [],
     entryComponents: [
-        LoginDialogComponent
+        LoginDialogComponent,
+        EditDialogComponent
     ]
 })
 export class ShareModule {}

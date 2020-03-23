@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { blog } from '../../../home';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,6 +11,8 @@ import { map, tap } from 'rxjs/operators';
 })
 export class BlogCardComponent implements OnInit {
   @Input() blog;
+  @Output() blogEditReq = new EventEmitter<blog>();
+  @Output() blogDelReq = new EventEmitter<blog>();
   isAdmin: Observable<boolean>;
   constructor(private router: Router, private route: ActivatedRoute) {}
 
@@ -22,4 +24,22 @@ export class BlogCardComponent implements OnInit {
     )
   }
 
+  editHandle() {
+    /*const dialogRef = this.dialog.open(EditDialogComponent, {
+      width: '450px',
+      data: this.blog
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      Object.assign(this.blog, result);
+
+        //Object.assign(this.blog, result);
+    });*/
+    this.blogEditReq.emit(this.blog); 
+  }
+
+  delHandle() {
+    this.blogDelReq.emit(this.blog);
+  }
 }

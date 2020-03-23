@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AdminContainerComponent } from './component';
 import { ShareModule } from '../share';
 import { AdminRoutingModule } from './admin-routing.module';
-import { MatListModule } from '@angular/material/list';
+
 
 @NgModule({
     declarations: [
@@ -12,8 +12,7 @@ import { MatListModule } from '@angular/material/list';
     imports: [ 
         CommonModule,
         ShareModule,
-        AdminRoutingModule,
-        MatListModule
+        AdminRoutingModule
     ],
     exports: [],
     providers: [],

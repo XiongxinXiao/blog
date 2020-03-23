@@ -10,17 +10,26 @@
     <mat-error *ngIf="nameFormControl.hasError('required')">
       User Name is <strong>required</strong>
     </mat-error>
+    <mat-error *ngIf="nameFormControl.hasError('maxlength')">
+      Maximum length of User Name is <strong>20</strong>
+    </mat-error>
   </mat-form-field>
   <br>
   <mat-form-field>
     <mat-label>Password</mat-label>
     <input 
-      matInput 
+      matInput [type]="hide ? 'password' : 'text'"
       placeholder="Password"
       [formControl]="passFormControl"
     >
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
     <mat-error *ngIf="passFormControl.hasError('required')">
       Password is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="passFormControl.hasError('maxlength')">
+      Maximum length of Password is <strong>20</strong>
     </mat-error>
   </mat-form-field>
 </div>

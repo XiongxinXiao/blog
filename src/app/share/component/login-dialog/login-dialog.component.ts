@@ -11,16 +11,15 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./login-dialog.component.css']
 })
 export class LoginDialogComponent implements OnInit {
-  username: string = '';
-  password: string = '';
   response: Observable<resLogin>;
+  hide = true;
   nameFormControl = new FormControl('', [
     Validators.required,
-    Validators.max(20)
+    Validators.maxLength(20)
   ]);
   passFormControl = new FormControl('', [
     Validators.required,
-    Validators.max(20)
+    Validators.maxLength(20)
   ]);
   
   constructor(
@@ -42,7 +41,7 @@ export class LoginDialogComponent implements OnInit {
       res => {
         if (res.errno === 0) {
           alert('Login successfully');
-          this.dialogRef.close();
+          this.dialogRef.close(res.data.realname);
         }else {
           alert(res.message);
         }

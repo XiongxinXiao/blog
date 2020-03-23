@@ -3,3 +3,11 @@
     display: flex;
     justify-content: center;
 }
+
+.newB {
+    position: fixed;
+    z-index: 1000;
+    left: 5%;
+    bottom: 5%;
+    font-size: 2rem;
+}

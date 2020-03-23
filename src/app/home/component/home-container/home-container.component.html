@@ -7,3 +7,17 @@
       ></app-blog-card>
   </mat-list>
 </div>
+<button mat-fab color="basic" class="option" (click)="searchToggleHandle()"
+  ><mat-icon>search</mat-icon></button>
+  <mat-form-field class="search" *ngIf="searchToggle">
+    <mat-label>Search Blog by keyword or author</mat-label>
+    <input matInput
+    [formControl]="searchControl"
+    >
+    <button mat-icon-button matSuffix class="button" (click)="searchHandle()">
+      <mat-icon class="icon">search</mat-icon>
+    </button>
+    <mat-error *ngIf="searchControl.hasError('maxlength')">
+      Maximum length of keyword is <strong>20</strong>
+    </mat-error>
+  </mat-form-field>

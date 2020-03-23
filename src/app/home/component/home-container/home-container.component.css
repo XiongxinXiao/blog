@@ -4,3 +4,18 @@
     justify-content: center;
 }
 
+.option {
+    position: fixed;
+    z-index: 1000;
+    left: 5rem;
+    bottom: 2rem;
+    font-size: 2rem;
+}
+
+.search {
+    position: fixed;
+    z-index: 1000;
+    left: 5rem;
+    bottom: 5rem;
+    width: 15rem;
+}

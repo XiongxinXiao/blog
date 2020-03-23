@@ -1,12 +1,19 @@
-<mat-toolbar>
-  <span>Summer Blog</span>
-  <button mat-button (click)="toHome()"
-  class="head-text"
-  >Home</button>
-  <button mat-button (click)="toAdmin()"
-  class="head-text"
-  >Admin</button>
-  <button mat-button (click)="toLogin()"
-  class="head-text"
-  >Login</button>
-</mat-toolbar>
+<mat-toolbar> 
+  <mat-toolbar-row>
+    <span class="">Summer Blog</span>
+    <button mat-button (click)="toHome()"
+    class="head-text"
+    >Home</button>
+    <button mat-button (click)="toAdmin()"
+    class="head-text"
+    >Admin</button>
+    <button mat-button (click)="toLogin()"
+    class="head-text" *ngIf="login$ | async"
+    >Login</button>
+    <button mat-button (click)="toLogout()"
+    class="head-text" *ngIf="!(login$ | async)"
+    >logout</button>
+    <span class="spacer"></span>
+    <span class="realName">Welcome, {{ nameMerge | async }}</span>
+  </mat-toolbar-row>
+</mat-toolbar> 

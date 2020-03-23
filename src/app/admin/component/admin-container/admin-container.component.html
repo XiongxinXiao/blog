@@ -1,9 +1,20 @@
 <div class="container">
   <mat-list *ngIf="blogs | async as blogList">
-      <app-blog-card mat-list-item
-      *ngFor="let blog of blogList"
-      [blog]="blog"
-      class="item"
-      ></app-blog-card>
+    <app-blog-card mat-list-item
+    *ngFor="let blog of blogList"
+    [blog]="blog"
+    (blogEditReq)="editHandle($event)"
+    (blogDelReq)="delHandle($event)"
+    class="item"
+    ></app-blog-card>
   </mat-list>
 </div>
+<button mat-fab color="basic" class="newB"
+[matMenuTriggerFor]="menu"
+  >+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="newHandle()">
+    <mat-icon>add</mat-icon>
+    <span>Post a new blog</span>
+  </button>
+</mat-menu>

@@ -13,6 +13,17 @@ export interface resList {
 }
 
 export interface resLogin {
+    data?: realname,
     message?: string,
     errno: number
+}
+
+export interface resEdit {
+    data?: object,
+    message?: string,
+    errno: number
+}
+
+export interface realname {
+    realname: string
 }

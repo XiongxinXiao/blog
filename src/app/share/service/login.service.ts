@@ -1,7 +1,7 @@
 import { Injectable, RootRenderer } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { resLogin } from '../interface';
+import { resLogin, realname } from '../interface';
 
 @Injectable({
     providedIn: 'root'
@@ -20,5 +20,12 @@ export class LoginService {
         }, 
         this.httpOptions
         )
+    }
+    getName() {
+      return this.http.get<resLogin>('/api/user/get-name')
+    }
+
+    logoutReq() {
+      return this.http.get<resLogin>('api/user/logout')
     }
 }

@@ -5,6 +5,33 @@
 }
 
 .head-text {
-    margin-left: 5rem;
+    margin-left: 3rem;
+    font-size: 1rem;
+    flex: none;
+}
+
+.icon {
+    height: 1rem;
+    width: 1rem;
+}
+
+.button {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.field {
+    padding: 0;
+    border: 0;
+    flex: none;
+    width: 33%;
+}
+
+.spacer {
+    flex: auto;
+  }
+
+.realName {
+    margin-right: 3rem;
     font-size: 1rem;
 }

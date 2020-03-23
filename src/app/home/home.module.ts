@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HomeContainerComponent } from './component/home-container';
 import { HomeRoutingModule } from './home-routing.module';
 import { ShareModule } from '../share';
-import { MatListModule } from '@angular/material/list';
-
 
 @NgModule({
     declarations: [
@@ -13,8 +11,7 @@ import { MatListModule } from '@angular/material/list';
     imports: [ 
         CommonModule,
         HomeRoutingModule,
-        ShareModule,
-        MatListModule
+        ShareModule
     ],
     exports: [],
     providers: [],

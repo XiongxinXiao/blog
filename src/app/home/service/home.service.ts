@@ -10,4 +10,7 @@ export class HomeService {
     getBlogs() {
         return this.http.get<resList>(`/api/blog/list`);
     }
+    getSearchBlogs(keyword: string) {
+        return this.http.get<resList>(`/api/blog/list?keyword=${keyword}`);
+    }
 }
