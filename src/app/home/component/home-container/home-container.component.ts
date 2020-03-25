@@ -27,7 +27,16 @@ export class HomeContainerComponent implements OnInit, OnDestroy {
     //mergeRes.subscribe((result) => console.log('this is merge', result));
     
     this.blogs = mergeRes.pipe(
-      map(res => res.data)
+      map(res => {
+        if (res.errno === 0) {
+          return res.data;
+        } else {
+          this.dialog.open(AlertComponent,{
+            width: '25rem',
+            data: res.message
+          })
+        }
+      })
     );
   }
   
@@ -47,6 +56,13 @@ export class HomeContainerComponent implements OnInit, OnDestroy {
         this.subject.next(res);
       }
     });
+  }
+
+  getAllHandle () {
+    const getAll = this.service.getBlogs();
+    getAll.pipe(takeUntil(this.unsubscribe)).subscribe(res => {
+      this.subject.next(res);
+    })
   }
 
   ngOnDestroy() {

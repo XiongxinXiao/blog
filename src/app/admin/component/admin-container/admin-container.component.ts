@@ -22,7 +22,16 @@ export class AdminContainerComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.response = this.service.getBlogs();
     this.blogs = this.response.pipe(
-      map(res => res.data)
+      map(res => {
+        if (res.errno === 0) {
+          return res.data;
+        } else {
+          this.dialog.open(AlertComponent,{
+            width: '25rem',
+            data: res.message
+          })
+        }
+      })
     );
     this.response.subscribe(res => {
       if (res.errno !== 0) {
@@ -53,7 +62,16 @@ export class AdminContainerComponent implements OnInit, OnDestroy {
               data: 'Updated blog has been uploaded'
             });
             this.blogs = this.response.pipe(
-              map(res => res.data)
+              map(res => {
+                if (res.errno === 0) {
+                  return res.data;
+                } else {
+                  this.dialog.open(AlertComponent,{
+                    width: '25rem',
+                    data: res.message
+                  })
+                }
+              })
             );
           } else {
             //alert(`${res.message}, please try to upload again`)
@@ -94,7 +112,16 @@ export class AdminContainerComponent implements OnInit, OnDestroy {
             });
             //window.location.reload();
             this.blogs = this.response.pipe(
-              map(res => res.data)
+              map(res => {
+                if (res.errno === 0) {
+                  return res.data;
+                } else {
+                  this.dialog.open(AlertComponent,{
+                    width: '25rem',
+                    data: res.message
+                  })
+                }
+              })
             );
           } else {
             //alert(`${res.message}, please try to upload again`)
@@ -118,7 +145,16 @@ export class AdminContainerComponent implements OnInit, OnDestroy {
           data: 'The blog has been deleted'
         });
         this.blogs = this.response.pipe(
-          map(res => res.data)
+          map(res => {
+            if (res.errno === 0) {
+              return res.data;
+            } else {
+              this.dialog.open(AlertComponent,{
+                width: '25rem',
+                data: res.message
+              })
+            }
+          })
         );
       }else {
         //alert(res.message);
