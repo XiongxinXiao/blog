@@ -28,7 +28,7 @@
     </mat-error>
   </div>
   <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button type="button" (click)="onNoClick()">No Thanks</button>
     <button mat-button type="submit" [disabled]="!blogForm.valid">Ok</button>
   </div>
 </form>

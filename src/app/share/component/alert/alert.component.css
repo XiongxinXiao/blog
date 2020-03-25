@@ -1,0 +1,10 @@
+.action {
+    display: flex;
+    justify-content: center;
+}
+
+.text {
+    font-size: 1rem;
+    font-weight: bold;
+    font-style: oblique;
+}

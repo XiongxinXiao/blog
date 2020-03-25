@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Inject, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { blog } from '../../interface';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -6,7 +6,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-edit-dialog',
   templateUrl: './edit-dialog.component.html',
-  styleUrls: ['./edit-dialog.component.css']
+  styleUrls: ['./edit-dialog.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditDialogComponent implements OnInit {
   dataHandle = new EventEmitter;
@@ -33,14 +34,6 @@ export class EditDialogComponent implements OnInit {
     this.dataHandle.emit(this.newBlog);
     //console.log('this is newBlog', this.newBlog);
   }
-  /*titleFormControl = new FormControl(this.newBlog.title, [
-    Validators.required,
-    Validators.max(50)
-  ]);
-  contentFormControl = new FormControl(this.newBlog.content, [
-    Validators.required,
-    Validators.max(500)
-  ]);*/
 
   ngOnInit() {
   }

@@ -1,14 +1,16 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { LoginService } from '../../service';
 import { Observable } from 'rxjs';
 import { resLogin } from '../../interface';
 import {FormControl, Validators} from '@angular/forms';
+import { AlertComponent } from '../alert';
 
 @Component({
   selector: 'app-login-dialog',
   templateUrl: './login-dialog.component.html',
-  styleUrls: ['./login-dialog.component.css']
+  styleUrls: ['./login-dialog.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginDialogComponent implements OnInit {
   response: Observable<resLogin>;
@@ -24,7 +26,8 @@ export class LoginDialogComponent implements OnInit {
   
   constructor(
     public dialogRef: MatDialogRef<LoginDialogComponent>,
-    private service: LoginService
+    private service: LoginService,
+    private dialog: MatDialog
     ) {}
 
   ngOnInit() {
@@ -40,10 +43,18 @@ export class LoginDialogComponent implements OnInit {
     this.response.subscribe(
       res => {
         if (res.errno === 0) {
-          alert('Login successfully');
+          //alert('Login successfully');
           this.dialogRef.close(res.data.realname);
+          this.dialog.open(AlertComponent, {
+            width: '25rem',
+            data: 'Login successfully'
+          });
         }else {
-          alert(res.message);
+          //alert(res.message);
+          this.dialog.open(AlertComponent, {
+            width: '25rem',
+            data: res.message
+          });
         }
       });
   }

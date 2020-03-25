@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { 
-    VerticleGridComponent, 
     BlogCardComponent, 
     LoginDialogComponent,
     HeaderComponent,
-    EditDialogComponent } from './component';
+    EditDialogComponent,
+    AlertComponent
+ } from './component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -23,10 +24,10 @@ import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
     declarations: [
         HeaderComponent,
-        VerticleGridComponent,
         BlogCardComponent,
         LoginDialogComponent,
-        EditDialogComponent
+        EditDialogComponent,
+        AlertComponent
     ],
     imports: [ 
         CommonModule,
@@ -44,7 +45,6 @@ import { MatMenuModule } from '@angular/material/menu';
     ],
     exports: [
         HeaderComponent,
-        VerticleGridComponent,
         BlogCardComponent,
         CommonModule,
         MatToolbarModule,
@@ -62,7 +62,8 @@ import { MatMenuModule } from '@angular/material/menu';
     providers: [],
     entryComponents: [
         LoginDialogComponent,
-        EditDialogComponent
+        EditDialogComponent,
+        AlertComponent
     ]
 })
 export class ShareModule {}

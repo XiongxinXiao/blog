@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { LoginDialogComponent } from '../login-dialog';
@@ -6,11 +6,13 @@ import {FormControl, Validators} from '@angular/forms';
 import { Observable, Subject, merge } from 'rxjs';
 import { LoginService } from '../../service';
 import { map, tap, takeUntil } from 'rxjs/operators';
+import { AlertComponent } from '../alert';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
@@ -67,8 +69,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
       if (res.errno === 0) {
         this.nameSubject.next('Visitor');
         this.router.navigate(['home']);
+        this.dialog.open(AlertComponent, {
+          width: '25rem',
+          data: 'Logout successfully'
+        });
       } else {
-        alert(res.message);
+        //alert(res.message);
+        this.dialog.open(AlertComponent, {
+          width: '25rem',
+          data: 'Logout unsuccessfully, please try again'
+        });
       }
     })
   }

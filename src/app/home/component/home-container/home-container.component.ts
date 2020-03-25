@@ -4,6 +4,9 @@ import { HomeService } from '../../service';
 import { Observable, merge, Subject, Subscription } from 'rxjs';
 import { filter, map, switchMap, tap, takeUntil } from 'rxjs/operators';
 import { FormControl, Validators } from '@angular/forms';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AlertComponent } from '../../../share/component';
+
 
 @Component({
   selector: 'app-home-container',
@@ -11,7 +14,7 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./home-container.component.css']
 })
 export class HomeContainerComponent implements OnInit, OnDestroy {
-  constructor(private service: HomeService) { }
+  constructor(private service: HomeService, private dialog: MatDialog) { }
   response: Observable<resList>;
   searchRes = new Observable<resList>();
   unsubscribe = new Subject<void>();
@@ -35,7 +38,11 @@ export class HomeContainerComponent implements OnInit, OnDestroy {
     this.searchRes.pipe(takeUntil(this.unsubscribe)).subscribe(res => {
       //console.log('this is search', res)
       if (res.data.length === 0) {
-        alert('No result match your keyword');
+        //alert('No result match your keyword');
+        this.dialog.open(AlertComponent,{
+          width: '25rem',
+          data: 'No result match your keyword'
+        })
       } else {
         this.subject.next(res);
       }

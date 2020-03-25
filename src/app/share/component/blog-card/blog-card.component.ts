@@ -7,7 +7,8 @@ import { map, tap } from 'rxjs/operators';
 @Component({
   selector: 'app-blog-card',
   templateUrl: './blog-card.component.html',
-  styleUrls: ['./blog-card.component.css']
+  styleUrls: ['./blog-card.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BlogCardComponent implements OnInit {
   @Input() blog;
